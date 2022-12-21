@@ -23,7 +23,7 @@
                 <% end %>
               <% end %>
             </div>
-            <%= form_with model: @chat, local: false do |f| %>
+            <%= form_with model: @chat, class: "js-form", local: false do |f| %>
               <%= f.text_field :message %>
               <%= f.hidden_field :room_id %>
               <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
