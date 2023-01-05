@@ -232,3 +232,39 @@ puts a28
 puts a28.class
 #classメソッドで数値の種類を確認
 
+r2 = '2/3'.to_r
+puts r2
+puts r2.class
+#文字列から有理数に変換できる
+
+c2 = 0.3-0.5i
+puts c2
+puts c2.class
+#iは複素数リテラルと言い、つけると複素数になる
+
+c3 = '0.3-0.5i'.to_c
+puts c3
+puts c3.class
+#.to_cメソッドは文字列を複素数に変換する
+
+user2 = ('Alice') || ('bob') || ('carol')
+puts user2
+#Rubyは左から順に式を評価する。これを短絡評価(ショートサーキット)と言う。
+
+t3=true
+f3=false
+a29=t3 and f3
+a30=t3 or f3
+
+puts a29
+puts a30
+#and、orは他の論理演算子と似た働きをする。違いは優先順位が低いこと 
+
+a31=!f3 || t3
+a32= (not f3 || t3)
+puts a31,a32
+#not使用時は括弧を付けないと使用できないので注意。また、！は||より優先順位が高く、notは||より低いので出力結果が異なる。page61
+
+
+
+
