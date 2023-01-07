@@ -265,6 +265,190 @@ a32= (not f3 || t3)
 puts a31,a32
 #not使用時は括弧を付けないと使用できないので注意。また、！は||より優先順位が高く、notは||より低いので出力結果が異なる。page61
 
+def greet2(country3)
+    country3 or return 'country3を入力してください'
+    
+    if country3 == 'Japan'
+        'こんにちは'
+    else
+        'Hello'
+    end
+end
 
+puts greet2(nil)
+puts greet2('Japan')
+#上記のようにorを使うと真でない場合に別の処理を実行する制御フローを作れる
 
+status = 'error'
+unless status == 'ok'
+   puts '何か異常があります'
+   else
+    puts   '正常です'
+end
+#unlessを使うと条件式が偽の時に処理が実行される。elsifは存在しない
+
+a33 = 
+    unless status == 'ok'
+        '何か異常があります'
+    else
+        '正常です'
+    end
+puts a33
+
+a34 = '何か異常があります' unless status =='ok'
+puts a34
+#ifと同じ様に変数代入、修飾子への代入可
+
+unless status =='ok' then
+    puts '何か異常があります'
+end
+#thenの使用は可能
+
+s = ('')
+if s.empty? == true
+    puts '空文字列です'
+end
+##上のように==trueや、==falseは冗長なので書かないほうが言い。以下に良い書き方を記す
+
+if s.empty?
+   puts '空文字列です'
+end
+
+notname=123
+if !notname.zero?
+    puts 'ゼロではありません'
+end
+#以上のように書こう
+
+a35 = nil
+if !a35
+    'nilです'
+end
+
+if a35.nil?
+    'nilです'
+end
+#nilも==nilや、!=nilと書かないようにしよう。
+
+a36 = true
+if a36==true
+    puts 'trueそのものです'
+end
+#ただし上のようにtrue、もしくはfalseそのものであることを判定したい時は==trueや、==falseと書く必要がある。
+
+case country
+when 'japan'
+    puts 'こんにちは'
+when 'us'
+    puts 'Hello'
+when 'italy'
+    puts 'Ciao'
+else
+    puts '???'
+end
+#case文はオブジェクトや式を複数の値と比較する時に使うとif文よりもシンプルになる
+#rubyのcase文はbreakを必要としない
+
+case country
+when 'japan','日本'
+    puts 'こんにちは'
+when 'us','アメリカ'
+    puts 'Hello'
+when 'italy','イタリア'
+    puts 'Ciao'
+else
+    puts '???'
+end
+#when節に複数条件を指定可能 67page
+
+case [0,1,2]
+in [n,1,2]
+"n=#{n}"
+else
+    'not matched'
+end
+
+puts n
+#パターンマッチのコード例
+
+n=11
+a37 = n > 10 ? '10より大きい' : '10以下'
+puts a37
+#?と:を使うと条件演算子と呼ばれる条件分岐を使える。　?はifに相当。:はelseに相当。
+
+#puts greet
+#puts ('us','japan')
+#上のコメントアウトしたコードの様に、メソッドの引数が無かったり少なかったり、多かったりするとエラーが起こるので注意
+
+def greet(country = 'japan')
+    if country == 'japan'
+        'こんにちは'
+    else
+        'hello'
+    end
+end
+
+puts greet
+puts greet('us')
+#上のように書くとデフォルト値が設定され、引数なしで呼び出してもデフォルト値が代わりに呼び出されてエラーにならない
+
+def default_args(a,b,c = 0, d=0)
+    a="#{a}",b="#{b}",c="#{c}",d="#{d}"
+end
+puts default_args(1,2)
+puts default_args(1,2,3)
+puts default_args(1,2,3,4)
+#上のようにデフォルト値を引数ごとにある場合とない場合をわけられる。
+
+def foo(time = Time.now, message = bar)
+    puts "time: #{time}, message: #{message}"
+end
+
+def bar
+    'BAR'
+end
+
+puts foo
+#デフォルト値には動的に変わる値や他のメソッドの戻り値を指定可能
+
+def point(x,y = x)
+    puts "x=#{x}, y=#{y}"
+end
+puts point(3)
+puts point(3,10)
+#デフォルト値は左にある引数を指定可能
+
+a38 = ('').empty?
+a39 = 'abc'.empty?
+puts a38,a39
+#empty?メソッドは空文字列かを真偽値で返す
+
+a40 = 'watch'.include?('at')
+a41 = 'watch'.include?('in')
+puts a40,a41
+#include?メソッドは引数の文字列が含まれているかで真偽値を返す
+
+a42 = 1.odd?
+a43 = 2.odd?
+puts a42,a43
+#odd?メソッドは奇数かどうかで真偽値を返す
+
+a44 = 1.even?
+a45 = 2.even?
+puts a44,a45
+#even?メソッドは偶数かどうかで真偽値を返す
+
+a46 = nil.nil?
+a47 = 'abc'.nil?
+a48 = 1.nil?
+puts a46,a47,a48
+#nil?メソッドがオブジェクトがnilかどうかで真偽値を返す
+
+def multiple_of_three?(n)
+    n%3==0
+end
+puts multiple_of_three?(4)
+puts multiple_of_three?(5)
+puts multiple_of_three?(6)
+#自分で?で終わるメソッドを作ることも可能。上は3の倍数かどうかで真偽値を返すメソッドである。
 
